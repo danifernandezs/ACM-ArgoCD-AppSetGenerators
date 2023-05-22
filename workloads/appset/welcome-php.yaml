@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: production-welcome-php
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: production
+        requeueAfterSeconds: 30
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{name}}-production-php'
+    spec:
+      destination:
+        server: '{{server}}'
+      project: production-appproject
+      revisionHistoryLimit: 5
+      source:
+        path: 'workloads/welcome-php/overlays/{{name}}'
+        repoURL: 'https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git'
+        targetRevision: main
+      syncPolicy: {}
