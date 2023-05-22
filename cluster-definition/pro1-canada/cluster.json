@@ -1,0 +1,9 @@
+{
+  "environment": "production",
+  "cloud": "aws",
+  "region": "ca-central-1",
+  "cluster": {
+    "name": "pro1-canada",
+    "address": "https://api.pro1-canada.sandbox1208.opentlc.com:6443"
+  }
+}

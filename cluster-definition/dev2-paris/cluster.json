@@ -1,0 +1,9 @@
+{
+  "environment": "development",
+  "cloud": "aws",
+  "region": "eu-west-3",
+  "cluster": {
+    "name": "dev2-paris",
+    "address": "https://api.dev2-paris.sandbox1208.opentlc.com:6443"
+  }
+}

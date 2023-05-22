@@ -1,0 +1,9 @@
+{
+  "environment": "preproduction",
+  "cloud": "aws",
+  "region": "eu-central-1",
+  "cluster": {
+    "name": "pre2-frankfurt",
+    "address": "https://api.pre2-frankfurt.sandbox1208.opentlc.com:6443"
+  }
+}

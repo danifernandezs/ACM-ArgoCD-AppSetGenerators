@@ -1,0 +1,9 @@
+{
+  "environment": "preproduction",
+  "cloud": "aws",
+  "region": "eu-north-1",
+  "cluster": {
+    "name": "pre1-stockholm",
+    "address": "https://api.pre1-stockholm.sandbox1208.opentlc.com:6443"
+  }
+}
