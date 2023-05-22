@@ -4,3 +4,6 @@ kind: Kustomization
 
 resources:
   - day2configs-appproject.yaml
+  - development-workload-appproject.yaml
+  - preproduction-workload-appproject.yaml
+  - production-workload-appproject.yaml
