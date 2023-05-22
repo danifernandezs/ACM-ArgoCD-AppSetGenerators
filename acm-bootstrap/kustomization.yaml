@@ -7,3 +7,4 @@ bases:
   - managedclusterset
   - managedclustersetbinding
   - placement
+  - managedCluster

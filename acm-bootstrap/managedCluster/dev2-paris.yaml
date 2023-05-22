@@ -1,0 +1,13 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: dev2-paris
+  labels:
+    name: dev2-paris
+    cloud: Amazon
+    region: eu-west-3
+    vendor: OpenShift
+    cluster.open-cluster-management.io/clusterset: all-ocp-clusters
+spec:
+  hubAcceptsClient: true

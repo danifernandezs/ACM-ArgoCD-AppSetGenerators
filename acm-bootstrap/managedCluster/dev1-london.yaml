@@ -1,0 +1,13 @@
+---
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: dev1-london
+  labels:
+    name: dev1-london
+    cloud: Amazon
+    region: eu-west-2
+    vendor: OpenShift
+    cluster.open-cluster-management.io/clusterset: all-ocp-clusters
+spec:
+  hubAcceptsClient: true
