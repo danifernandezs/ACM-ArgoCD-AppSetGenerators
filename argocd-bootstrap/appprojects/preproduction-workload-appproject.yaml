@@ -8,8 +8,10 @@ spec:
   destinations:
   - name: pre1-stockholm
     namespace: '*'
+    server: 'https://api.pre1-stockholm.sandbox1208.opentlc.com:6443'
   - name: pre2-frankfurt
     namespace: '*'
+    server: 'https://api.pre2-frankfurt.sandbox1208.opentlc.com:6443'
   sourceRepos:
   - '*'
   clusterResourceWhitelist:
