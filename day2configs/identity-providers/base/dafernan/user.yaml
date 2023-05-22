@@ -1,7 +1,7 @@
 ---
 apiVersion: user.openshift.io/v1
 groups: null
-identities: {}
+identities: []
 kind: User
 metadata:
   name: dafernan
