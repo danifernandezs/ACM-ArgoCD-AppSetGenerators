@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: etcd
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git
+      revision: main
+      files:
+      - path: "cluster-definition/**/cluster.json"
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{cluster.name}}-etcd'
+    spec:
+      project: day2configs
+      source:
+        repoURL: https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git
+        targetRevision: main
+        path: day2configs/etcd/overlays/{{cluster.name}}
+      destination:
+        server: '{{cluster.address}}'
+      syncPolicy: {}
+      revisionHistoryLimit: 5
