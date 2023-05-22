@@ -1,0 +1,15 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: production-appproject
+  namespace: openshift-gitops
+spec:
+  destinations:
+  - name: pro1-canada
+    namespace: '*'
+  sourceRepos:
+  - '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

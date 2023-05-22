@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: development-appproject
+  namespace: openshift-gitops
+spec:
+  destinations:
+  - name: dev1-london
+    namespace: '*'
+  - name: dev2-paris
+    namespace: '*'
+  sourceRepos:
+  - '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

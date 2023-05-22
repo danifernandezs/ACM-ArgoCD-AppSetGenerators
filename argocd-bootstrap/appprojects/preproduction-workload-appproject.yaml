@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: preproduction-appproject
+  namespace: openshift-gitops
+spec:
+  destinations:
+  - name: pre1-stockholm
+    namespace: '*'
+  - name: pre2-frankfurt
+    namespace: '*'
+  sourceRepos:
+  - '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
