@@ -6,23 +6,53 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git
-      revision: main
-      files:
-      - path: "cluster-definition/**/cluster.json"
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: development
+        requeueAfterSeconds: 30
   syncPolicy:
     preserveResourcesOnDeletion: true
   template:
     metadata:
-      name: '{{cluster.name}}-development-bgd'
+      name: '{{name}}-development-bgd'
     spec:
-      project: development-appproject
-      source:
-        repoURL: https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git
-        targetRevision: main
-        path: workloads/bgd/overlays/{{cluster.name}}
       destination:
-        server: '{{cluster.address}}'
-      syncPolicy: {}
+        server: '{{server}}'
+      project: development-appproject
       revisionHistoryLimit: 5
+      source:
+        path: 'workloads/bgd/overlays/{{name}}'
+        repoURL: 'https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git'
+        targetRevision: main
+      syncPolicy: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: preproduction-bgd
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: preproduction
+        requeueAfterSeconds: 30
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{name}}-preproduction-bgd'
+    spec:
+      destination:
+        server: '{{server}}'
+      project: preproduction-appproject
+      revisionHistoryLimit: 5
+      source:
+        path: 'workloads/bgd/overlays/{{name}}'
+        repoURL: 'https://github.com/danifernandezs/ACM-ArgoCD-AppSetGenerators.git'
+        targetRevision: main
+      syncPolicy: {}
