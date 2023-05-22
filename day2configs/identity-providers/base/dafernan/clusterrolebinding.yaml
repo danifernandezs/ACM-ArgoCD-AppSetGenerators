@@ -2,9 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: cluster-admin-0
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
+  name: dafernan-as-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
