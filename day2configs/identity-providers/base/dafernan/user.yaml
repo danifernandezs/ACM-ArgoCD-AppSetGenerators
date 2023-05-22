@@ -1,0 +1,9 @@
+---
+apiVersion: user.openshift.io/v1
+groups: null
+identities: {}
+kind: User
+metadata:
+  name: dafernan
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"

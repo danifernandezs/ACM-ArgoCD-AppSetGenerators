@@ -3,5 +3,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+# Oauth
   - oauth/oauth.yaml
   - oauth/localusers-secret.yaml
+# RoleBinding for local user
+  - dafernan/user.yaml
+  - dafernan/group.yaml
+  - dafernan/clusterrolebinding.yaml
